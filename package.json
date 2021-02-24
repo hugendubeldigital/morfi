@@ -1,6 +1,6 @@
 {
-  "name": "morfi",
-  "version": "1.1.9",
+  "name": "@hugendubel/morfi",
+  "version": "1.1.10.1",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "src/index.d.ts",
@@ -16,15 +16,11 @@
     "flow"
   ],
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://nexus.hugendubel-digital.de/repository/npm-hosted/"
+  },
   "author": "Viktor Luft <viktor.luft@freiheit.com> (https://github.com/fdc-viktor-luft)",
   "homepage": "https://fdc-viktor-luft.github.io/morfi/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fdc-viktor-luft/morfi"
-  },
-  "bugs": {
-    "url": "https://github.com/fdc-viktor-luft/morfi/issues"
-  },
   "scripts": {
     "dist": "bin/dist.sh",
     "start": "bin/start.sh",
