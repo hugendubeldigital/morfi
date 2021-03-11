@@ -28,7 +28,7 @@ type FormProps<V: Object> = {|
     onSubmit: (V) => void | Promise<void>,
     onSubmitFailed?: (Error, FormData<V>) => void,
     onSubmitFinished?: (FormData<V>) => void,
-    forwardRef?: InputRef
+    forwardRef?: InputRef,
 |};
 export type iForm<V: Object> = React$ComponentType<FormProps<V>>;
 export type FieldProps<F> = {|

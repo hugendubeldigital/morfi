@@ -11,6 +11,8 @@ type FieldValidation<F> = Partial<{ [key in ValidationType]: Validator<F> }>;
 export type FormValidation<V> = Partial<{ [key in keyof V]: FieldValidation<V[key]>}>;
 export type FormErrors<V> = Partial<{ [key in keyof V]: ErrorMessage }>;
 export type FormData<V> = { values: V, errors: FormErrors<V>, submitting?: boolean };
+export type AbstractRef<T> = { current: null | T };
+export type InputRef = AbstractRef<HTMLInputElement>;
 type FormProps<V> = {
     className?: string,
     validation: FormValidation<V>,
@@ -20,6 +22,7 @@ type FormProps<V> = {
     onSubmit: (values: V) => void | Promise<void>,
     onSubmitFailed?: (error: Error, data: FormData<V>) => void,
     onSubmitFinished?: (data: FormData<V>) => void,
+    forwardRef?: InputRef,
 };
 export type iForm<V> = FC<FormProps<V>>;
 export type FieldProps<F> = {
