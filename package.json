@@ -1,6 +1,6 @@
 {
   "name": "@hugendubel/morfi",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "src/index.d.ts",
