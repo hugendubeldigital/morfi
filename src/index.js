@@ -17,6 +17,8 @@ type FieldValidation<F> = $Shape<{| [ValidationType]: Validator<F> |}>;
 export type FormValidation<V> = $Shape<$ObjMap<V, <F>(F) => FieldValidation<F>>>;
 export type FormErrors<V> = $Shape<$ObjMap<V, () => ErrorMessage>>;
 export type FormData<V> = {| values: V, errors: FormErrors<V>, submitting?: boolean |};
+export type AbstractRef<T> = { current: null | T };
+export type InputRef = AbstractRef<HTMLInputElement>;
 type FormProps<V: Object> = {|
     className?: string,
     validation: FormValidation<V>,
@@ -26,6 +28,7 @@ type FormProps<V: Object> = {|
     onSubmit: (V) => void | Promise<void>,
     onSubmitFailed?: (Error, FormData<V>) => void,
     onSubmitFinished?: (FormData<V>) => void,
+    forwardRef?: InputRef
 |};
 export type iForm<V: Object> = React$ComponentType<FormProps<V>>;
 export type FieldProps<F> = {|
@@ -252,9 +255,9 @@ class Form<V: Object> extends Component<_FormProps<V>> {
     m = true;
 
     render(): React$Node {
-        const { className, children, data, FC } = this.props;
+        const { className, children, data, FC, forwardRef } = this.props;
         return (
-            <form className={className} onSubmit={this._onSubmit} method="post">
+            <form className={className} onSubmit={this._onSubmit} method="post" ref={forwardRef}>
                 <FC.Provider value={{ data, update: this.update, required: this.required }}>{children}</FC.Provider>
             </form>
         );
