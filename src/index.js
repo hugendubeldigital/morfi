@@ -18,7 +18,7 @@ export type FormValidation<V> = $Shape<$ObjMap<V, <F>(F) => FieldValidation<F>>>
 export type FormErrors<V> = $Shape<$ObjMap<V, () => ErrorMessage>>;
 export type FormData<V> = {| values: V, errors: FormErrors<V>, submitting?: boolean |};
 export type AbstractRef<T> = { current: null | T };
-export type InputRef = AbstractRef<HTMLInputElement>;
+export type InputRef = AbstractRef<HTMLFormElement>;
 type FormProps<V: Object> = {|
     className?: string,
     validation: FormValidation<V>,
